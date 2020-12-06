@@ -12,7 +12,7 @@ parser.add_argument('-i','--input', help='Insert the file path of compressed fil
 parser.add_argument('rules', nargs='*', help='<min> <max> <character>')
 
 # Const Character
-CHARACTER = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/"
+CHARACTER = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" #!@#$%^&*()-_+=~`[]{}|\\:;\"'<>,.?/"
 
 class Check:
     def __init__(self, Arg):
@@ -123,13 +123,13 @@ class Handler:
         for Pass in listPass:
             tryPass = ''.join(Pass)
             # Multi Thread:
-            # nThread = Thread(target=self.Brute, args=(tryPass, ))
-            # nThread.start()
+            nThread = Thread(target=self.Brute, args=(tryPass, ))
+            nThread.start()
 
-            # Single Thread: 
-            self.Brute(tryPass)
-            if self.result:
-                return
+            # Single Thread:
+            # self.Brute(tryPass)
+            # if self.result:
+               # return
 def main():
     check = Check(sys.argv[1:])
     args = parser.parse_args()
